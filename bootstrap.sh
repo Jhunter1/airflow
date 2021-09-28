@@ -1,1 +1,1 @@
-sh -c 'airflow'
+echo "blah blah"
