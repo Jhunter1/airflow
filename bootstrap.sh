@@ -1,1 +1,1 @@
-exec airflow webserver
+airflow webserver
