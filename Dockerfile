@@ -10,10 +10,10 @@ COPY bootstrap.sh /bootstrap.sh
 #USER root
 #RUN chmod +x /bootstrap.sh
 
+#dockerfile seems to not complete unless you have a CMD command hence why this is used instead of RUN like the other lines:
 CMD ["webserver"]
-#RUN airflow webserver
 RUN airflow db init
-#RUN airflow users create --username admin --password admin --firstname Peter --lastname Parker --role Admin --email spiderman@superhero.org
+RUN airflow users create --username admin --password admin --firstname Peter --lastname Parker --role Admin --email spiderman@superhero.org
 
 
 #airflow db init
