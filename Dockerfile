@@ -7,7 +7,7 @@ FROM apache/airflow
 WORKDIR /app
 COPY . .
 RUN ./bootstrap.sh
-ENTRYPOINT ["/bootstrap.sh"]
+#ENTRYPOINT ["./bootstrap.sh"]
 
 #airflow db init
 #run in pod terminal: airflow users create --username admin --password admin --firstname Peter --lastname Parker --role Admin --email spiderman@superhero.org
