@@ -6,7 +6,7 @@ FROM apache/airflow
 
 WORKDIR /app
 COPY . .
-RUN ./bootstrap.sh
+#RUN ./bootstrap.sh
 #ENTRYPOINT ["./bootstrap.sh"]
 
 #airflow db init
