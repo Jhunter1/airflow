@@ -1,20 +1,33 @@
+# notes from airflow about building your own image: https://airflow.apache.org/docs/docker-stack/build.html
+
 # oc new-app https://github.com/Jhunter1/airflow --name testairflow
 # oc expose service/testairflow
 
 FROM apache/airflow
-
-#creates a folder /app inside container
-#The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile. If the WORKDIR doesn’t exist, it will be created even if it’s not used in any subsequent Dockerfile instruction.
-
 COPY bootstrap.sh /bootstrap.sh
 #USER root
 #RUN chmod +x /bootstrap.sh
 
-#dockerfile seems to not complete unless you have a CMD command hence why this is used instead of RUN like the other lines:
+RUN airflow scheduler
+
+
+# for some reason, the airflow executable command doesn't need to be put in to CMD but in RUN you must use it
+#the build does not seem to complete unless you have a CMD command in the dockerfile hence why this is used instead of RUN like the other lines:
 CMD ["webserver"]
+
+#airflow image has sqlite, mysql and postgres available. sqlite is the default but shouldn't be used for production.
+#setting up the database as postgres https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html
+#run this to check the configured database: airflow config get-value core sql_alchemy_conn
 RUN airflow db init
+
+
 RUN airflow users create --username admin --password admin --firstname Peter --lastname Parker --role Admin --email spiderman@superhero.org
+# TO ADD - make dags folder
 
 
-#airflow db init
-#run in pod terminal: airflow users create --username admin --password admin --firstname Peter --lastname Parker --role Admin --email spiderman@superhero.org
+
+#ARGS - The airflow image uses arguments to configure it
+#AIRFLOW_HOME is set by default to /opt/airflow
+#If no AIRFLOW__CORE__SQL_ALCHEMY_CONN variable is set then SQLite database is created in ${AIRFLOW_HOME}/airflow.db.
+
+
