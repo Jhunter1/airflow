@@ -8,7 +8,7 @@ COPY bootstrap.sh /bootstrap.sh
 #USER root
 #RUN chmod +x /bootstrap.sh
 
-RUN airflow scheduler
+#RUN airflow scheduler
 
 
 # for some reason, the airflow executable command doesn't need to be put in to CMD but in RUN you must use it
