@@ -4,4 +4,4 @@
 FROM apache/airflow
 CMD ["webserver"]
 
-CMD ["create_user --username admin --lastname admin --firstname admin --email airflow@apache.org --role Admin --password admin"]
+CMD ["users create --username admin --lastname admin --firstname admin --email airflow@apache.org --role Admin --password admin"]
