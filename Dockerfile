@@ -8,6 +8,7 @@ FROM apache/airflow
 WORKDIR /app
 COPY . .
 
+USER root
 RUN chmod +x /app/bootstrap.sh
 RUN /bin/bash -c /app/bootstrap.sh
 #ENTRYPOINT ["/app/bootstrap.sh"]
