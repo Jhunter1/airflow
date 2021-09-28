@@ -9,16 +9,9 @@ FROM apache/airflow
 COPY bootstrap.sh /bootstrap.sh
 #USER root
 #RUN chmod +x /bootstrap.sh
+
 #CMD ["webserver"]
-CMD ["airflow","webserver"]
-#ENTRYPOINT ["/bootstrap.sh"]
-
-#COPY command runs as root so all of the files are owned by root - therefore need to change to root to execute the sh script
-
-#RUN chmod +x /app/bootstrap.sh
-#RUN /bin/bash -c /app/bootstrap.sh
-
-#ENTRYPOINT ["/app/bootstrap.sh"]
+RUN ["airflow","--GROUP_OR_COMMAND webserver"]
 
 
 #airflow db init
