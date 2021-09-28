@@ -3,8 +3,10 @@
 
 FROM apache/airflow
 #CMD ["webserver"]
-COPY bootstrap.sh /bootstrap.sh
-RUN /bootstrap.sh
+
+WORKDIR /app
+COPY . .
+RUN ./bootstrap.sh
 ENTRYPOINT ["/bootstrap.sh"]
 
 #airflow db init
