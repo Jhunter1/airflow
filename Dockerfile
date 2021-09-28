@@ -8,9 +8,11 @@ FROM apache/airflow
 WORKDIR /app
 COPY . .
 
+#COPY command runs as root so all of the files are owned by root - therefore need to change to root to execute the sh script
 USER root
 RUN chmod +x /app/bootstrap.sh
 RUN /bin/bash -c /app/bootstrap.sh
+
 #ENTRYPOINT ["/app/bootstrap.sh"]
 
 #CMD ["webserver"]
