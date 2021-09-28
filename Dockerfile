@@ -4,7 +4,7 @@
 FROM apache/airflow
 #CMD ["webserver"]
 COPY bootstrap.sh /bootstrap.sh
-RUN chmod +x /bootstrap.sh
+RUN /bootstrap.sh
 ENTRYPOINT ["/bootstrap.sh"]
 
 #airflow db init
