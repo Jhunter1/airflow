@@ -11,11 +11,11 @@ COPY . .
 #COPY command runs as root so all of the files are owned by root - therefore need to change to root to execute the sh script
 USER root
 RUN chmod +x /app/bootstrap.sh
-#RUN /bin/bash -c /app/bootstrap.sh
+RUN /bin/bash -c /app/bootstrap.sh
 
 
 
 #ENTRYPOINT ["/app/bootstrap.sh"]
-CMD ["webserver"]
+#CMD ["webserver"]
 #airflow db init
 #run in pod terminal: airflow users create --username admin --password admin --firstname Peter --lastname Parker --role Admin --email spiderman@superhero.org
