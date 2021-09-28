@@ -10,9 +10,7 @@ COPY bootstrap.sh /bootstrap.sh
 #USER root
 #RUN chmod +x /bootstrap.sh
 
-#CMD ["webserver"]
-CMD "airflow --GROUP_OR_COMMAND webserver"
-
+CMD ["airflow --GROUP_OR_COMMAND webserver"]
 
 #airflow db init
 #run in pod terminal: airflow users create --username admin --password admin --firstname Peter --lastname Parker --role Admin --email spiderman@superhero.org
