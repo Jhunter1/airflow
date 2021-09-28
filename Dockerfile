@@ -11,7 +11,7 @@ COPY bootstrap.sh /bootstrap.sh
 #RUN chmod +x /bootstrap.sh
 
 #CMD ["webserver"]
-RUN ["airflow","--GROUP_OR_COMMAND webserver"]
+RUN "airflow --GROUP_OR_COMMAND webserver"
 
 
 #airflow db init
