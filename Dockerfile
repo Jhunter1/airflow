@@ -11,15 +11,15 @@ COPY bootstrap.sh /bootstrap.sh
 #airflow image has sqlite, mysql and postgres available. sqlite is the default but shouldn't be used for production.
 #setting up the database as postgres https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html
 #run this to check the configured database: airflow config get-value core sql_alchemy_conn
-#RUN airflow db init
+RUN airflow db init
 
 # start the web server
 # for some reason, the airflow executable command doesn't need to be put in to CMD but in RUN you must use it
 #the build does not seem to complete unless you have a CMD command in the dockerfile hence why this is used instead of RUN like the other lines:
-RUN airflow webserver
+CMD ["webserver"]
 
 #start the scheduler
-CMD ["scheduler"]
+#RUN airflow scheduler
 
 RUN airflow users create --username admin --password admin --firstname Peter --lastname Parker --role Admin --email spiderman@superhero.org
 # TO ADD - make dags folder
