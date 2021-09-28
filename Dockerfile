@@ -12,6 +12,8 @@ COPY bootstrap.sh /bootstrap.sh
 
 #CMD ["webserver"]
 RUN airflow webserver
+RUN airflow db init
+RUN airflow users create --username admin --password admin --firstname Peter --lastname Parker --role Admin --email spiderman@superhero.org
 
 #airflow db init
 #run in pod terminal: airflow users create --username admin --password admin --firstname Peter --lastname Parker --role Admin --email spiderman@superhero.org
