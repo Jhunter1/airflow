@@ -8,8 +8,8 @@ FROM apache/airflow
 WORKDIR /app
 COPY . .
 
-RUN /bin/bash -c /app/bootstrap.sh
-#ENTRYPOINT ["./bootstrap.sh"]
+#RUN /bin/bash -c /app/bootstrap.sh
+ENTRYPOINT ["/app/bootstrap.sh"]
 
 #CMD ["webserver"]
 #airflow db init
