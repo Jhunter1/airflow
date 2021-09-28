@@ -1,2 +1,1 @@
-cd /opt/
 airflow webserver
