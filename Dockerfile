@@ -1,2 +1,2 @@
 FROM apache/airflow
-RUN 'webserver'
+CMD ["airflow webserver"]
