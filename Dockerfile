@@ -16,7 +16,7 @@ COPY bootstrap.sh /bootstrap.sh
 # start the web server
 # for some reason, the airflow executable command doesn't need to be put in to CMD but in RUN you must use it
 #the build does not seem to complete unless you have a CMD command in the dockerfile hence why this is used instead of RUN like the other lines:
-#CMD ["webserver"]
+RUN webserver
 
 #start the scheduler
 CMD ["scheduler"]
