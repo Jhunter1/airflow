@@ -19,6 +19,8 @@ COPY bootstrap.sh /bootstrap.sh
 #sets the sql_alchemy_conn value - this wont update the airflow.cfg file but does update the running values (airflow config get-value core SQL_ALCHEMY_CONN)
 ENV AIRFLOW__CORE__SQL_ALCHEMY_CONN="postgresql+psycopg2://airflowsandbox:777dns93n39c23n3@172.30.103.138/airflow_db"
 
+#Remember, ENV is for future running containers after image is built. ARG for building your Docker image. ARG values are not available after the image is built.  https://vsupalov.com/docker-arg-vs-env/
+
 # start the web server
 # for some reason, the airflow executable command doesn't need to be put in to CMD but in RUN you must use it
 #the build does not seem to complete unless you have a CMD command in the dockerfile hence why this is used instead of RUN like the other lines:
@@ -31,7 +33,7 @@ CMD ["webserver"]
 
 
 #start the scheduler
-#RUN airflow scheduler
+RUN airflow scheduler
 
 RUN airflow users create --username admin --password admin --firstname Peter --lastname Parker --role Admin --email spiderman@superhero.org
 # TO ADD - make dags folder
