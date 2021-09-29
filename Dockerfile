@@ -10,9 +10,6 @@ FROM apache/airflow
 #CREATE USER airflow_user WITH PASSWORD 'airflow_pass';
 #GRANT ALL PRIVILEGES ON DATABASE airflow_db TO airflow_user;
 
-#sets the sql_alchemy_conn value - this wont update the airflow.cfg file but does update the running values (airflow config get-value core SQL_ALCHEMY_CONN)
-RUN export AIRFLOW__CORE__SQL_ALCHEMY_CONN="postgresql+psycopg2://airflowsandbox:777dns93n39c23n3@172.30.103.138/airflow_db"
-
 COPY bootstrap.sh /bootstrap.sh
 #USER root
 #RUN chmod +x /bootstrap.sh
@@ -22,6 +19,8 @@ COPY bootstrap.sh /bootstrap.sh
 #the build does not seem to complete unless you have a CMD command in the dockerfile hence why this is used instead of RUN like the other lines:
 CMD ["webserver"]
 
+#sets the sql_alchemy_conn value - this wont update the airflow.cfg file but does update the running values (airflow config get-value core SQL_ALCHEMY_CONN)
+RUN export AIRFLOW__CORE__SQL_ALCHEMY_CONN="postgresql+psycopg2://airflowsandbox:777dns93n39c23n3@172.30.103.138/airflow_db"
 
 #airflow image has sqlite, mysql and postgres available. sqlite is the default but shouldn't be used for production.
 #setting up the database as postgres https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html
