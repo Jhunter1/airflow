@@ -1,4 +1,5 @@
 # oc new-app https://github.com/Jhunter1/airflow --name scheduler --context-dir=scheduler
+# oc expose service/scheduler
 
 FROM apache/airflow
 
