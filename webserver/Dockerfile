@@ -35,6 +35,6 @@ ENV AIRFLOW__CORE__SQL_ALCHEMY_CONN="postgresql+psycopg2://airflowsandbox:777dns
 CMD ["webserver"]
 
 # TO ADD - make dags folder
-COPY . .
+COPY ./dags .
 # $AIRFLOW_HOME/dags/
 
