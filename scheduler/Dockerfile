@@ -1,3 +1,4 @@
+# oc new-app https://github.com/Jhunter1/airflow --name scheduler --context-dir=scheduler
 
 FROM apache/airflow
 
@@ -5,4 +6,3 @@ ENV AIRFLOW__CORE__SQL_ALCHEMY_CONN="postgresql+psycopg2://airflowsandbox:777dns
 
 #start the scheduler
 CMD ["scheduler"]
-
