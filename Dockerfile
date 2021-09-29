@@ -25,7 +25,7 @@ RUN export AIRFLOW__CORE__SQL_ALCHEMY_CONN="postgresql+psycopg2://airflowsandbox
 #airflow image has sqlite, mysql and postgres available. sqlite is the default but shouldn't be used for production.
 #setting up the database as postgres https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html
 #run this to check the configured database: airflow config get-value core sql_alchemy_conn
-#RUN airflow db init
+RUN airflow db init
 
 
 #start the scheduler
