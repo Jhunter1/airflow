@@ -5,8 +5,13 @@
 
 FROM apache/airflow
 
+
+#CREATE DATABASE airflow_db;
+#CREATE USER airflow_user WITH PASSWORD 'airflow_pass';
+#GRANT ALL PRIVILEGES ON DATABASE airflow_db TO airflow_user;
+
 #sets the sql_alchemy_conn value in airflow.cfg file
-ARG AIRFLOW__CORE__SQL_ALCHEMY_CONN="postgresql+psycopg2://airflowsandbox:777dns93n39c23n3@172.30.103.138/airflow_db"
+ARG SQL_ALCHEMY_CONN="postgresql+psycopg2://airflowsandbox:777dns93n39c23n3@172.30.103.138/airflow_db"
 
 COPY bootstrap.sh /bootstrap.sh
 #USER root
@@ -22,7 +27,6 @@ CMD ["webserver"]
 #setting up the database as postgres https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html
 #run this to check the configured database: airflow config get-value core sql_alchemy_conn
 #RUN airflow db init
-
 
 
 #start the scheduler
