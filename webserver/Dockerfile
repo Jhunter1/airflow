@@ -36,6 +36,6 @@ CMD ["webserver"]
 
 # TO ADD - make dags folder
 
-COPY dags/dag_example.py ./
+COPY dags/dag_example.py $AIRFLOW_HOME/dag_example.py
 # $AIRFLOW_HOME/dags/
 
