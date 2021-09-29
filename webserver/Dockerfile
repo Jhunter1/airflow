@@ -16,7 +16,7 @@ FROM apache/airflow
 #CREATE USER airflow_user WITH PASSWORD 'airflow_pass';
 #GRANT ALL PRIVILEGES ON DATABASE airflow_db TO airflow_user;
 
-COPY bootstrap.sh /bootstrap.sh
+#COPY bootstrap.sh /bootstrap.sh
 #USER root
 #RUN chmod +x /bootstrap.sh
 
