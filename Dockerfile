@@ -20,12 +20,13 @@ ENV AIRFLOW__CORE__SQL_ALCHEMY_CONN="postgresql+psycopg2://airflowsandbox:777dns
 #Remember, ENV is for future running containers after image is built. ARG for building your Docker image. ARG values are not available after the image is built.  https://vsupalov.com/docker-arg-vs-env/
 
 #start the scheduler
-RUN airflow scheduler
+CMD ["scheduler"]
+#RUN airflow scheduler
 
-# start the web server
+# start the web server - when you run airflow webserver, it is starting a python flask app.
 # for some reason, the airflow executable command doesn't need to be put in to CMD but in RUN you must preface commands with it
 #the build does not seem to complete unless you have a CMD command in the dockerfile hence why this is used instead of RUN like the other lines:
-CMD ["webserver"]
+#CMD ["webserver"]
 
 #airflow image has sqlite, mysql and postgres available. sqlite is the default but shouldn't be used for production.
 #setting up the database as postgres https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html
