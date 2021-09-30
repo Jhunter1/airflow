@@ -20,12 +20,6 @@ FROM apache/airflow
 #USER root
 #RUN chmod +x /bootstrap.sh
 
-# TO Do - change dags to sit on a volume - bad practice to keep them in the container because makes it awkward to edit them https://towardsdatascience.com/getting-started-with-airflow-using-docker-cd8b44dbff98
-# Add dags - this must be run before the webserver is started.
-# airflow dags list
-COPY ./dags/ ./dags/
-# $AIRFLOW_HOME/dags/
-
 #sets the sql_alchemy_conn value to use postgres instead of the default sqlite
 #This wont update the airflow.cfg file but does update the running values (airflow config get-value core SQL_ALCHEMY_CONN)
 #If no AIRFLOW__CORE__SQL_ALCHEMY_CONN variable is set then SQLite database is created in ${AIRFLOW_HOME}/airflow.db. sqlite is the default but shouldn't be used for production.
